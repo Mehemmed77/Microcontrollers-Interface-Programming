@@ -1,0 +1,29 @@
+
+# STM32CubeIDE build outputs
+Debug/
+Release/
+
+# Compiled files
+*.elf
+*.hex
+*.bin
+*.map
+*.srec
+*.lst
+*.o
+*.d
+*.a
+*.su
+*.crl
+
+# IDE logs and temporary backups
+*.log
+*.bak
+
+# Local workspace metadata
+.metadata/
+
+# Optional: machine-specific debugger configurations
+# Uncomment if you don't want to share them
+# *.launch
+# *.jlink
