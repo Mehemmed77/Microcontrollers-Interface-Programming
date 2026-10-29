@@ -99,8 +99,6 @@ int main(void)
   {
 	    SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
 
-	    DBGMCU->CR &= ~DBGMCU_CR_DBG_STOP;
-
 	    PWR->CR &= ~PWR_CR_PDDS;
 
 	    PWR->CR |= PWR_CR_LPDS;

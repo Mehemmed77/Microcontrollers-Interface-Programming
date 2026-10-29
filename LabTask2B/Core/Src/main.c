@@ -109,7 +109,9 @@ int main(void)
     }
 
     __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
-    HAL_PWR_EnterSTANDBYMode();
+    PWR->CR |= PWR_CR_PDDS;
+    SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+    __WFI();
 }
 
 /**

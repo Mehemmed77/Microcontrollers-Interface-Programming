@@ -313,16 +313,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     	if(note < 4) {
 			uint32_t arr = note_arr[note];
 
-			__HAL_TIM_SET_AUTORELOAD(&htim3, arr);
-			__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, (arr + 1) / 2);
+			__HAL_TIM_SET_AUTORELOAD(&htim3, arr); // change ARR during update event
+			__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, (arr + 1) / 2); // 50% duty cycle
 
-			note = (note + 1) % 4;
+//			note++;
     	}
 
     	else{
     		uint32_t ccr = duty_arr[duty];
-    		__HAL_TIM_SET_AUTORELOAD(&htim3, note_arr[3]);
-    		__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, ccr);
+    		__HAL_TIM_SET_AUTORELOAD(&htim3, note_arr[3]); // ARR remains unchanged
+    		__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, ccr); // CCR changes accordingly to Duty cycle
 
     		duty = (duty + 1) % 3;
     	}

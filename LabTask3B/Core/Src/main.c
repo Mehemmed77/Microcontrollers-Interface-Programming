@@ -48,6 +48,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 volatile uint32_t period = 0;
+volatile uint32_t count = 0;
 volatile uint32_t pulse_width = 0;
 volatile float frequency = 0;
 /* USER CODE END PV */
@@ -111,16 +112,17 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  int len = sprintf(msg,
-	                    "Period: %lu us | Pulse: %lu us\r\n",
+	                    "Period: %lu us | Pulse: %lu us | Count: %lu \r\n",
 	                    period,
-	                    pulse_width);
+	                    pulse_width, count);
 
 	  HAL_UART_Transmit(&huart2,
 	                    (uint8_t *)msg,
 	                    len,
 	                    HAL_MAX_DELAY);
 
-	  HAL_Delay(500);
+	  HAL_Delay(200);
+	  count++;
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
